@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Okrut &amp; Karpenko Family Tree — Editor V4</title>
+<title>The Okrut &amp; Karpenko Family Tree — Editor V5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,20 +33,30 @@
 .editor-panel{position:fixed;z-index:50;left:14px;top:145px;width:340px;max-height:calc(100vh - 165px);overflow:auto;background:rgba(255,253,248,.98);border:1px solid #c9bea9;border-radius:10px;box-shadow:0 16px 45px rgba(43,38,32,.18);display:none;font-family:Inter,sans-serif}.editor-panel.open{display:block}.editor-panel-inner{padding:16px}.editor-panel h2{font-family:Fraunces,serif;font-size:22px;margin:0 0 3px}.editor-panel .small{font-size:9px;color:var(--ink-soft);line-height:1.45}.panel-row{margin-top:11px}.panel-row label{display:block;font-size:9px;color:var(--ink-soft);margin-bottom:5px}.panel-row input,.panel-row textarea,.panel-row select{width:100%;box-sizing:border-box;border:1px solid #c9bea9;border-radius:6px;background:#fffefa;color:var(--ink);font-size:11px;padding:8px;font-family:Inter,sans-serif}.panel-row textarea{min-height:100px;resize:vertical;line-height:1.45}.panel-buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.panel-buttons button{border:1px solid #c9bea9;background:transparent;border-radius:6px;padding:8px 6px;font-size:10px;color:var(--ink);cursor:pointer}.panel-buttons button:hover{background:#efe8da}.panel-buttons button.full{grid-column:1/-1}.panel-buttons button.danger{color:var(--mat)}.panel-section{border-top:1px solid var(--line);padding-top:12px;margin-top:13px}.panel-title{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px}.close-panel{float:right;border:0;background:transparent;font-size:18px;color:var(--ink-soft);cursor:pointer}.selection-ring{fill:none;stroke:var(--pat);stroke-width:2.8;pointer-events:none}.line-selection{stroke:var(--pat)!important;stroke-width:3!important}.line-hit{stroke:transparent;stroke-width:15;fill:none;cursor:pointer;vector-effect:non-scaling-stroke}.editor-canvas.draw-mode svg{cursor:crosshair}.draw-preview{stroke:var(--pat);stroke-width:2;stroke-dasharray:5 5;fill:none;pointer-events:none;vector-effect:non-scaling-stroke}.placeholder-circle{stroke:#777062!important;stroke-width:1.6!important;stroke-dasharray:5 4}.person-focus{filter:drop-shadow(0 0 4px rgba(47,90,115,.35))}.minimap{position:fixed;right:14px;bottom:14px;z-index:40;background:rgba(255,253,248,.97);border:1px solid #c9bea9;border-radius:9px;padding:7px;box-shadow:0 8px 25px rgba(43,38,32,.14)}.minimap.hidden{display:none}.minimap canvas{display:block;width:280px;height:150px;background:var(--bg);border:1px solid #e0d7c7;cursor:pointer}.minimap-title{font-size:8px;letter-spacing:.1em;color:var(--ink-soft);margin:0 0 4px}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;background:#2b2620;color:#fffdf8;border-radius:999px;padding:8px 14px;font-size:10px;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}.help-strip{font-size:10px;color:var(--ink-soft);text-align:center;border-bottom:1px solid var(--line);padding:7px 12px;background:#fbf8f0}.legend .editor-key{font-weight:600}.editor-badge{font-size:9px;letter-spacing:.08em;color:var(--ink-soft);margin-left:8px}
 @media(max-width:900px){.editor-panel{left:7px;width:300px}.editor-toolbar .status{display:none}.editor-canvas{max-height:calc(100vh - 205px)}}
 
+
+/* V5 layout and interaction controls */
+body{padding:0 0 20px;}
+.editor-toolbar{position:fixed;left:0;right:0;top:0;height:58px;z-index:1000;flex-wrap:nowrap;padding:7px 12px;overflow-x:auto;overflow-y:hidden;}
+.editor-shell{padding-top:58px;}
+.editor-canvas{max-height:calc(100vh - 58px);height:calc(100vh - 58px);min-height:0;}
+.editor-panel{top:68px;left:12px;right:auto;width:350px;max-height:calc(100vh - 80px);}
+.line-toggle{display:inline-flex;align-items:center;gap:6px;font-size:10px;color:var(--ink-soft);white-space:nowrap;cursor:pointer;user-select:none;}
+.line-toggle input{accent-color:var(--pat);width:14px;height:14px;margin:0;}
+.editor-toolbar button:disabled{opacity:.38;cursor:not-allowed;background:transparent;border-color:transparent;}
+.delete-line-active{background:#f3dfd8!important;border-color:#c98c7f!important;color:var(--mat)!important;}
+.panel-save{background:#2F5A73!important;color:#fffdf8!important;border-color:#2F5A73!important;}
+.panel-save:hover{background:#23485d!important;}
+.panel-dirty{border-color:#9C8659!important;background:#fbf2dc!important;}
+.fte-hidden-original{display:none!important;}
+@media(max-width:900px){.editor-panel{top:65px;left:7px;width:310px}.editor-toolbar{gap:2px}.editor-toolbar .status{display:none}.editor-canvas{height:calc(100vh - 58px);max-height:calc(100vh - 58px)}}
+
 </style>
 </head>
 <body>
-<h1>The Okrut &amp; Karpenko family tree <span class="editor-badge">EDITOR V4</span></h1>
-<div class="subtitle">Every person gathered so far — seven generations, drawn as one tree</div>
-<div class="legend">
-  <span><span class="dot" style="background:var(--pat)"></span>Paternal line — Okrut / Beloushko / Farafonov</span>
-  <span><span class="dot" style="background:var(--mat)"></span>Maternal line — Karpenko / Galochkina</span>
-  <span><span class="dot" style="background:var(--merge)"></span>Where the two lines meet</span>
-  <span><span class="dot" style="background:var(--collateral)"></span>Married in / adopted</span>
-</div>
-<div class="noteband">Birth date (m/d/y) and birthplace sit right under each name where known — a "~" marks a place known only roughly (a region, not a town). The editor keeps the original tree style, positions, typography and connector geometry as its starting point.</div>
 <div class="editor-toolbar" id="toolbar">
-  <div class="group"><button id="selectTool" class="active">↖ Select</button><button id="drawTool">╱ Draw line</button><button id="moveTool">✥ Move person</button></div>
+  <div class="group"><button id="selectTool" class="active">↖ Select</button><button id="moveTool">✥ Move person</button><button id="drawTool">╱ Draw line</button><button id="deleteLineTool">⌫ Delete line</button></div>
+  <span class="sep"></span>
+  <label class="line-toggle"><input type="checkbox" id="lineEditingToggle" checked> <span>Line editing</span></label>
   <span class="sep"></span>
   <div class="group"><button id="undoBtn">↶ Undo</button><button id="redoBtn">↷ Redo</button></div>
   <span class="sep"></span>
@@ -55,7 +65,7 @@
   <div class="group"><button id="newPersonBtn">＋ Person</button><button id="mapBtn">Map</button><button id="saveBtn">Save</button><button id="resetBtn">Reset</button><button id="exportBtn">Export</button><button id="importBtn">Import</button></div>
   <div class="status" id="status">Original tree loaded</div>
 </div>
-<div class="help-strip" id="helpStrip">Click a person to edit · drag a connector in its allowed direction · drag empty space to pan · wheel to zoom</div>
+<div class="help-strip" id="helpStrip">Click a person to edit · drag empty space to pan · wheel to zoom · use Delete line to remove connectors</div>
 <div class="editor-shell">
   <div class="editor-canvas" id="canvasWrap">
     <div class="scroller" style="overflow:visible;padding:20px 20px 40px;">

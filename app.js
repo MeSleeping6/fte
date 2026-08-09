@@ -1,4 +1,5 @@
-/* V4 MAIN ENTRY — bootstrap and safety checks. */
+import {V5Toolkit, treeSummary, validateTreeState} from './v5-toolkit.js';
+/* V5 MAIN ENTRY — bootstrap and safety checks. */
 import {makeInitialState,clone,Store,STORAGE_KEY} from './core.js';
 import {FamilyTreeEditor} from './controller.js';
 
@@ -14,7 +15,7 @@ function boot(){
   if(!state || !Array.isArray(state.people) || state.people.length<1){state=clone(original);store.clear();}
   const editor=new FamilyTreeEditor(svg,state);
   window.familyTreeEditor=editor;
-  window.familyTreeV4={editor,original};
+  window.familyTreeV5={editor,original,toolkit:V5Toolkit,summary:()=>treeSummary(editor.state),validate:()=>validateTreeState(editor.state)};
 }
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();

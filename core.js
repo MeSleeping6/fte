@@ -1,6 +1,6 @@
 /* V4 CORE — state, history, persistence, geometry, and DOM utilities. */
 export const SVG_NS = 'http://www.w3.org/2000/svg';
-export const STORAGE_KEY = 'fte-family-tree-editor-v4-state';
+export const STORAGE_KEY = 'fte-family-tree-editor-v5-state';
 export const COLORS = {
   paternal: '#2F5A73',
   maternal: '#8C3A34',
@@ -87,7 +87,7 @@ export function makeInitialState(svg){
       locked:false
     });
   });
-  return {version:4,people,segments,meta:{width:Number(svg.getAttribute('width')||3300),height:Number(svg.getAttribute('height')||1360)}};
+  return {version:5,people,segments,meta:{width:Number(svg.getAttribute('width')||3300),height:Number(svg.getAttribute('height')||1360)}};
 }
 export function categoryFromFill(fill){
   if(fill.includes('pat')) return 'paternal';
