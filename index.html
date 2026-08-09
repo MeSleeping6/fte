@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Okrut & Karpenko — Family Tree Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="identity">
+      <div class="title">Family Tree Editor</div>
+      <div class="subtitle">Okrut &amp; Karpenko</div>
+    </div>
+
+    <div class="toolbar">
+      <button class="tb active" id="selectBtn" title="Select">↖ <span>Select</span></button>
+      <button class="tb" id="drawBtn" title="Draw a new line">╱ <span>Draw</span></button>
+      <span class="divider"></span>
+      <button class="tb" id="undoBtn" title="Undo">↶</button>
+      <button class="tb" id="redoBtn" title="Redo">↷</button>
+      <span class="divider"></span>
+      <button class="tb" id="zoomOut" title="Zoom out">−</button>
+      <button class="zoom" id="zoomValue">100%</button>
+      <button class="tb" id="zoomIn" title="Zoom in">＋</button>
+      <button class="tb" id="fitBtn" title="Fit tree to window">Fit</button>
+      <span class="divider"></span>
+      <button class="tb" id="addBtn" title="Add person">＋ Person</button>
+      <button class="tb" id="mapBtn" title="Show/hide minimap">Map</button>
+      <button class="tb" id="saveBtn" title="Save in this browser">Save</button>
+      <button class="tb" id="exportBtn" title="Download your editable tree data">Export</button>
+    </div>
+  </header>
+
+  <div id="app">
+    <aside id="panel" class="panel closed"></aside>
+
+    <section id="viewport" class="viewport">
+      <svg id="tree" xmlns="http://www.w3.org/2000/svg" aria-label="Family tree">
+        <g id="lines"></g>
+        <g id="people"></g>
+        <g id="drawing"></g>
+      </svg>
+
+      <div id="tip" class="tip">Click a person to edit them • Drag empty space to move around • Wheel to zoom</div>
+
+      <div id="minimap" class="minimap">
+        <div class="mini-title">TREE MAP</div>
+        <canvas id="miniCanvas" width="280" height="160"></canvas>
+      </div>
+    </section>
+  </div>
+
+  <input id="importFile" type="file" accept=".json,application/json" hidden>
+  <script src="app.js"></script>
+</body>
+</html>
