@@ -1,57 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Okrut & Karpenko — Family Tree Editor</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Okrut &amp; Karpenko Family Tree — Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="identity">
-      <div class="title">Family Tree Editor</div>
-      <div class="subtitle">Okrut &amp; Karpenko</div>
-    </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-title">The Okrut &amp; Karpenko Family Tree</div>
+    <div class="brand-sub">EDITOR · Version 3</div>
+  </div>
+  <nav class="toolbar">
+    <button class="tool active" id="selectMode">↖ <span>Select</span></button>
+    <button class="tool" id="drawMode">╱ <span>Draw line</span></button>
+    <i></i>
+    <button class="tool" id="undo">↶ <span>Undo</span></button>
+    <button class="tool" id="redo">↷ <span>Redo</span></button>
+    <i></i>
+    <button class="tool" id="minus">−</button>
+    <button class="zoomText" id="zoomText">100%</button>
+    <button class="tool" id="plus">+</button>
+    <button class="tool" id="fit">Fit</button>
+    <i></i>
+    <button class="tool" id="newPerson">＋ Person</button>
+    <button class="tool" id="minimapToggle">Map</button>
+    <button class="tool" id="save">Save</button>
+    <button class="tool" id="reset">Reset</button>
+    <button class="tool" id="export">Export</button>
+  </nav>
+</header>
 
-    <div class="toolbar">
-      <button class="tb active" id="selectBtn" title="Select">↖ <span>Select</span></button>
-      <button class="tb" id="drawBtn" title="Draw a new line">╱ <span>Draw</span></button>
-      <span class="divider"></span>
-      <button class="tb" id="undoBtn" title="Undo">↶</button>
-      <button class="tb" id="redoBtn" title="Redo">↷</button>
-      <span class="divider"></span>
-      <button class="tb" id="zoomOut" title="Zoom out">−</button>
-      <button class="zoom" id="zoomValue">100%</button>
-      <button class="tb" id="zoomIn" title="Zoom in">＋</button>
-      <button class="tb" id="fitBtn" title="Fit tree to window">Fit</button>
-      <span class="divider"></span>
-      <button class="tb" id="addBtn" title="Add person">＋ Person</button>
-      <button class="tb" id="mapBtn" title="Show/hide minimap">Map</button>
-      <button class="tb" id="saveBtn" title="Save in this browser">Save</button>
-      <button class="tb" id="exportBtn" title="Download your editable tree data">Export</button>
-    </div>
-  </header>
+<main id="viewport">
+  <svg id="tree" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3300 1360" preserveAspectRatio="xMinYMin meet">
+    <g id="lineLayer"></g>
+    <g id="personLayer"></g>
+    <g id="draftLayer"></g>
+  </svg>
 
-  <div id="app">
-    <aside id="panel" class="panel closed"></aside>
+  <aside id="editor" class="editor hidden"></aside>
 
-    <section id="viewport" class="viewport">
-      <svg id="tree" xmlns="http://www.w3.org/2000/svg" aria-label="Family tree">
-        <g id="lines"></g>
-        <g id="people"></g>
-        <g id="drawing"></g>
-      </svg>
-
-      <div id="tip" class="tip">Click a person to edit them • Drag empty space to move around • Wheel to zoom</div>
-
-      <div id="minimap" class="minimap">
-        <div class="mini-title">TREE MAP</div>
-        <canvas id="miniCanvas" width="280" height="160"></canvas>
-      </div>
-    </section>
+  <div id="help" class="help">
+    <b>Click a person</b> to edit · <b>drag empty space</b> to pan · <b>mouse wheel</b> to zoom
   </div>
 
-  <input id="importFile" type="file" accept=".json,application/json" hidden>
-  <script src="app.js"></script>
+  <div id="map" class="map">
+    <div class="map-title">TREE MAP</div>
+    <canvas id="mapCanvas" width="280" height="150"></canvas>
+  </div>
+</main>
+<script src="app.js"></script>
 </body>
 </html>

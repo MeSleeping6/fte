@@ -1,42 +1,33 @@
-# Family Tree Editor — Version 2
+# Family Tree Editor V3
 
-This is a working browser-based editor for the Okrut & Karpenko family tree.
+This version is self-contained. The original family-tree data is embedded directly in `app.js`, so GitHub Pages does not need to fetch `family-tree.json` for the tree to appear.
 
-## Files
+The V3 localStorage key is different from earlier versions, so an old empty/broken saved state cannot replace the original tree.
 
-- `index.html` — page
-- `style.css` — visual styling
-- `app.js` — editor behavior
-- `family-tree.json` — tree data imported from the original HTML/SVG
-
-## Current features
-
-- Original tree data loaded from the supplied family-tree HTML
-- People shown as circles with names/info underneath
-- Click a person to edit first, middle, last name
-- Unlimited info lines under each person; Enter makes a new line
-- Add a person
-- Add two parent placeholders
-- Add sibling, spouse, and child placeholders
-- Remove a person without deleting their existing connector segments
-- Gray dashed placeholders for removed/unknown people
-- Lock/unlock people
-- Focus on a person
-- Select existing connector segments
-- Drag horizontal lines vertically and vertical lines horizontally
-- Delete connector segments
-- Draw new orthogonal (straight horizontal/vertical) connector paths
-- Pan
-- Mouse-wheel zoom
-- 10%–500% zoom through the zoom controls
-- Fit tree
+Features:
+- Original 59 people and 83 connector segments
+- Original Fraunces/Inter typography and colors
+- Click person to edit
+- First/middle/last name
+- Unlimited info lines
+- Add two parents, sibling, spouse, child
+- Remove person while keeping a gray placeholder
+- Lock/unlock
+- Select and drag existing line segments
+- Horizontal lines move vertically
+- Vertical lines move horizontally
+- Delete line
+- Draw new orthogonal lines
+- Pan and mouse-wheel zoom
+- 10%–500% zoom
+- Fit
 - Minimap
 - Undo/redo
-- Browser-local save
+- Browser save
+- Reset to original
 - JSON export
 
-## Important design choice
-
-The visual tree is deliberately stored as separate `people` and `segments`. This means a person's removal does not automatically destroy the lines around their old position. That is important for preserving the user's hand-arranged layout.
-
-The next versions can add smarter relationship metadata while continuing to preserve manually adjusted visual positions.
+Files:
+- index.html
+- style.css
+- app.js

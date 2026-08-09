@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "title": "The Okrut & Karpenko family tree",
+  "version": 3,
+  "title": "The Okrut & Karpenko Family Tree",
   "subtitle": "Every person gathered so far — seven generations, drawn as one tree",
   "canvas": {
     "width": 3300.0,
@@ -1445,9 +1445,5 @@
       "x2": 3120.0,
       "y2": 1050.0
     }
-  ],
-  "settings": {
-    "fontFamily": "'Inter',sans-serif",
-    "nodeRadius": 24
-  }
+  ]
 }
