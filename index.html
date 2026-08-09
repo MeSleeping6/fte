@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">
+      <div class="brand-title">Family Tree Editor</div>
+      <div class="brand-subtitle">Okrut &amp; Karpenko</div>
+    </div>
+
+    <div class="tool-group">
+      <button id="selectTool" class="tool active" title="Select people and lines">↖ Select</button>
+      <button id="drawTool" class="tool" title="Draw a straight/orthogonal line">╱ Draw line</button>
+    </div>
+
+    <div class="tool-group">
+      <button id="undoBtn" class="tool" title="Undo">↶ Undo</button>
+      <button id="redoBtn" class="tool" title="Redo">↷ Redo</button>
+    </div>
+
+    <div class="tool-group">
+      <button id="zoomOut" class="tool" title="Zoom out">−</button>
+      <button id="zoomLabel" class="zoom-label">100%</button>
+      <button id="zoomIn" class="tool" title="Zoom in">+</button>
+      <button id="fitBtn" class="tool" title="Fit the tree">Fit</button>
+      <button id="miniBtn" class="tool" title="Toggle minimap">Map</button>
+    </div>
+
+    <div class="tool-group right-tools">
+      <button id="addPersonTop" class="primary">＋ Person</button>
+      <button id="saveBtn" class="tool">Save</button>
+      <button id="exportBtn" class="tool">Export</button>
+    </div>
+  </header>
+
+  <main id="workspace">
+    <aside id="sidePanel" class="side-panel closed">
+      <div id="panelContent"></div>
+    </aside>
+
+    <section id="canvasWrap" class="canvas-wrap">
+      <div id="canvasViewport" class="canvas-viewport">
+        <svg id="treeSvg" xmlns="http://www.w3.org/2000/svg">
+          <g id="gridLayer"></g>
+          <g id="segmentLayer"></g>
+          <g id="nodeLayer"></g>
+          <g id="drawLayer"></g>
+        </svg>
+      </div>
+
+      <div id="minimap" class="minimap">
+        <div class="minimap-title">Tree map</div>
+        <canvas id="miniCanvas" width="260" height="150"></canvas>
+      </div>
+
+      <div id="status" class="status">Select a person to edit them.</div>
+    </section>
+  </main>
+
+  <script src="family-tree.json" type="application/json" id="treeData"></script>
+  <script src="app.js"></script>
+</body>
+</html>
